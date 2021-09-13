@@ -1,2 +1,4 @@
-# IT202-001
-Repository for IT202 projects
+# IT202 - 001
+## Ellis Ballard
+### I am a Junior and an IT student
+
