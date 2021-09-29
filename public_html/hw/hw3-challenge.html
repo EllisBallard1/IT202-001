@@ -8,6 +8,11 @@
         window.addEventListener("load", () => {
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
+            const links = document.querySelectorAll('a');
+            for (let item = 0; item < links.length; item++){
+                let link = links[item];
+                link.onclick = getCurrentSelection;
+            }
         });
         function getCurrentSelection() {
             setTimeout(() => {
@@ -15,26 +20,39 @@
                 //TODO: add code for processing the current selection 
 
                 //Note: likely you'll want to call updateCurrentPage towards the end
+                function updateCurrentPage(selectionStr) {
+                    document.querySelector("h1").innerText = selectionStr;
+                    document.querySelector("title").innerText = selectionStr;
+                }
+                var currentLink = window.location.hash;
+                var currentLink = currentLink.slice(1);
+                updateCurrentPage(currentLink);
             }, 100);
         }
     </script>
     <style>
-        nav > ul > li {
+        nav>ul>li {
             display: inline;
         }
-        nav > ul {
+
+        nav>ul {
             background-color: grey;
         }
-        nav > ul > li > a:hover {
+
+        nav>ul>li>a:hover {
             background-color: red;
         }
-        ul > li > ul {
+
+        ul>li>ul {
             list-style-type: "✓";
         }
-        h1, a {
+
+        h1,
+        a {
             text-transform: capitalize;
         }
-        nav > ul > li {
+
+        nav>ul>li {
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
     </style>
