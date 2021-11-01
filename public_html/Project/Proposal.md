@@ -1,9 +1,9 @@
-# Project Name: (Which Project)
-## Project Summary: (Copy from proposal)
-## Github Link: (Prod Branch of Project Folder)
-## Project Board Link: 
+# Project Name: Simple Bank
+## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
+## Github Link: https://github.com/EllisBallard1/IT202-001/tree/prod
+## Project Board Link: https://github.com/EllisBallard1/IT202-001/projects/1
 ## Website Link: (Heroku Prod of Project folder)
-## Your Name:
+## Your Name: Ellis Ballard
 
 <!--
 ### Line item / Feature template (use this for each bullet point)
@@ -29,9 +29,13 @@
         - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
         - Pull Requests
         - PR link #1 (repeat as necessary)
+        - https://github.com/EllisBallard1/IT202-001/pull/10
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 ![image](https://user-images.githubusercontent.com/89932304/139109858-7546b0e5-0adc-4181-9f6e-4e9e3929047c.png)
+            - Screenshot #1 description: This picture shows that a new user was successfully able to register an account in the database.
+        - Screenshot #2 ![image](https://user-images.githubusercontent.com/89932304/139110258-a24f1642-4d40-450c-9a99-23cb12f21b95.png)
+            - Screenshot #2 description: This picture shows the confirmation that the user is now successfully registered and stored in the database.
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to login to their account (given they enter the correct credentials))
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -41,6 +45,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to logout)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -50,6 +55,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (Basic security rules implemented)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -59,6 +65,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (Basic Roles implemented)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -68,6 +75,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (Site should have basic styles/theme applied; everything should be styled)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -77,6 +85,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (Any output messages/errors should be “user friendly”)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -86,6 +95,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to see their profile)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
@@ -95,6 +105,7 @@
         - Screenshots
         - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
             - Screenshot #1 description explaining what you're trying to show
+            
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to edit their profile)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
