@@ -23,9 +23,9 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to register a new account)
+    - [ ] \(11/1/2021 of completion) Feature Title (User will be able to register a new account)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
+        - Status: Pending (Completed)
         - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
         - Pull Requests
         - PR link #1 (repeat as necessary)
@@ -38,13 +38,13 @@
 
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to login to their account (given they enter the correct credentials))
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
+        - Status: Pending (Completed)
         - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/10
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 ![image](https://user-images.githubusercontent.com/89932304/139706173-7fb9ae51-d02c-4471-82e1-5d501df2904c.png)
+            - This screenshot shows the validation message and information for when the user is able to successfully login.
 
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to logout)
     -  List of Evidence of Feature Completion
