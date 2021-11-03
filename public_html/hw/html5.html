@@ -1,10 +1,20 @@
+<h1>Shoot The Ship!</h1>
 <canvas id="canvas" width="600" height="400" tabindex="1">
 </canvas>
+<!--Added a refresh button just so you can easily play the game more than once-->
+<style>
+    button{
+        font-size: 20px;
+        height: 100px;
+        width: 200px;
+    }
+</style>
+<button onClick="window.location.reload();">Restart The Game</button> 
 <script>
     //Ideas for big changes
     //1 The bullet moves faster every time the user reaches a specific increment in their score
     //2 The player's shit gains size when the enemy goes out of bounds to make it harder to dodge without the game ending
-    
+
     // Arcade Shooter game
 
     // Get a reference to the canvas DOM element
@@ -204,7 +214,7 @@
                     // Make the game harder
                     //increase shooting speed
                     if (score % 2 === 0){
-                        bullet.s *= 1.1;
+                        bullet.s *= 1.5;
                     }
                     if (score % 10 === 0 && timeBetweenEnemies > 1000) {
                         clearInterval(timeoutId);
