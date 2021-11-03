@@ -2,9 +2,9 @@
 </canvas>
 <script>
     //Ideas for big changes
-    //1 Let the user shoot faster every certain increment of score
-    //2 (opt 1) let the user choose to either increase the size of their bullet or increase its speed
-    //2 (opt 2) let the user move faster after an increment and/or also add an image to shoot at.
+    //1 The bullet moves faster every time the user reaches a specific increment in their score
+    //2 The player's shit gains size when the enemy goes out of bounds to make it harder to dodge without the game ending
+    
     // Arcade Shooter game
 
     // Get a reference to the canvas DOM element
@@ -160,8 +160,10 @@
         // Move and draw the enemies
         enemies.forEach(function (enemy) {
             enemy.x -= enemy.s;
-            if (enemy.x < 0) {
-                gameOver = true;
+            if (enemy.x < 0 && !enemy.passed) {
+                //gameOver = true;
+                enemy.passed = true;
+                ship.l *= 1.1;
             }
             context.fillStyle = '#00FF00';
             enemy.draw();
@@ -200,6 +202,10 @@
                     score++;
                     shooting = false;
                     // Make the game harder
+                    //increase shooting speed
+                    if (score % 2 === 0){
+                        bullet.s *= 1.1;
+                    }
                     if (score % 10 === 0 && timeBetweenEnemies > 1000) {
                         clearInterval(timeoutId);
                         timeBetweenEnemies -= 1000;
