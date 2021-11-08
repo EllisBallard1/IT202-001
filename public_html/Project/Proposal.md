@@ -2,7 +2,7 @@
 ## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
 ## Github Link: https://github.com/EllisBallard1/IT202-001/tree/prod
 ## Project Board Link: https://github.com/EllisBallard1/IT202-001/projects/1
-## Website Link: (Heroku Prod of Project folder)
+## Website Link: https://eab4-prod.herokuapp.com/Project/login.php
 ## Your Name: Ellis Ballard
 
 <!--
@@ -49,75 +49,100 @@
           - ![image](https://user-images.githubusercontent.com/89932304/140788966-36c241a3-b9cb-4aae-8a7f-99f0f050eb61.png)
             - This screenshot shows the validation message and information for when the user is able to successfully login.
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to logout)
+    - [ ] \(11/8/2021 of completion) Feature Title (User will be able to logout)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
+        - Status: (Completed)
         - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/11
+        - PR Link #2 https://github.com/EllisBallard1/IT202-001/pull/32
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140790080-8139e38d-7fe0-4d8a-9436-2b176f311716.png)
+            - Screenshot #1 description: This screenshot shows the success message presented to the user when they logout of their account
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (Basic security rules implemented)
+    - [ ] \(11/8/2021 of completion) Feature Title (Basic security rules implemented)
     -  List of Evidence of Feature Completion
         - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/admin/list_roles.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/24
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140791007-6e95288c-7a51-4f37-b6b8-e2b6e93bb0d9.png)
+            - This screenshot shows the Admin role being implemented in the database. From here only the admin user(s) are able to create roles or view sensitive information.
+        - Screenshot #2 
+          - ![image](https://user-images.githubusercontent.com/89932304/140791212-59a8c614-1a09-44d1-ad23-a01ceb992954.png)
+            - This screenshot shows the admin role being kept within the database table.
+        - Screenshot #3 
+          - ![image](https://user-images.githubusercontent.com/89932304/140791504-fcdfe6cf-e50b-41ad-a297-60a2c75f85d2.png)
+            - This screenshot shows the admin page where they can monitor the security roles on the site.
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (Basic Roles implemented)
+    - [ ] \(11/8/2021 of completion) Feature Title (Basic Roles implemented)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: (Completed)
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/admin/list_roles.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/24
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140791504-fcdfe6cf-e50b-41ad-a297-60a2c75f85d2.png)
+            - This screenshot shows the admin view for the roles of the site. Also from this area the admin user can create roles or update features for the roles
+        - Screenshot #2 
+          - ![image](https://user-images.githubusercontent.com/89932304/140795238-63f04d9e-5e2b-402c-9507-67e761c8f7ce.png)
+            - This screenshot shows the user roles table containing the admin role set to the value of 1
+        - Screenshot #3 
+           - ![image](https://user-images.githubusercontent.com/89932304/140795377-6a942808-1f21-42c5-b871-6f490993bb25.png)
+            - This screenshot shows the entire table containing the users, with the admin user having a filter of 1
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (Site should have basic styles/theme applied; everything should be styled)
-    -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-        - Pull Requests
-        - PR link #1 (repeat as necessary)
-        - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (Any output messages/errors should be “user friendly”)
+    - [ ] \(11/8/2021 of completion) Feature Title (Site should have basic styles/theme applied; everything should be styled)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: (Completed)
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/23
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140797927-a2e96124-ccff-44ba-8986-d2ed339da9b7.png)
+            - This screenshot shows the styling that I applied to the page, such as the coloring and margins for the text input areas.
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to see their profile)
+    - [ ] \(11/8/2021 of completion) Feature Title (Any output messages/errors should be “user friendly”)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: (Completed)
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/login.php
         - Pull Requests
-        - PR link #1 (repeat as necessary)
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/11
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140798534-99b21a74-1692-44d2-ba6c-15ceacf6df0f.png)
+            - This screenshot shows an example of an error message that gets displayed if the user makes an error while trying to access the site
+
+    - [ ] \(11/8/2021 of completion) Feature Title (User will be able to see their profile)
+    -  List of Evidence of Feature Completion
+        - Status: (Completed)
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/profile.php
+        - Pull Requests
+        - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/25
+        - PR link #2 https://github.com/EllisBallard1/IT202-001/pull/24
+        - Screenshots
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140798763-92d5055e-8fa6-4487-9dc9-69d47e541c3f.png)
+            - This screenshow shows the page that allows the user to view their profile and update their password if they want
             
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to edit their profile)
+    - [ ] \(11/8/2021 of completion) Feature Title (User will be able to edit their profile)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed, Partially working, Incomplete, Pending)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: (Completed)
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/profile.php
         - Pull Requests
         - PR link #1 (repeat as necessary)
         - Screenshots
-        - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-            - Screenshot #1 description explaining what you're trying to show
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140799093-e3f0ae24-22a3-4d3b-a6fa-d4ead0fdc7ce.png)
+            - This screenshot shows the confirmation message when the user updates their password for accessing the database.
+        - Screenshot #2 
+          - ![image](https://user-images.githubusercontent.com/89932304/140799459-60d8790e-11cb-4763-b703-735b851e927d.png)
+            - This screenshot shows the message that appears when the user attmepts to update their email to one that is already in use.
 - Milestone 2
 - Milestone 3
 - Milestone 4
