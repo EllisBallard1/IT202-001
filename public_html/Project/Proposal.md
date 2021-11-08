@@ -25,25 +25,28 @@
 - Milestone 1
     - [ ] \(11/1/2021 of completion) Feature Title (User will be able to register a new account)
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: (Completed)
+        - Direct Link: https://eab4-dev.herokuapp.com/Project/register.php
         - Pull Requests
         - PR link #1 (repeat as necessary)
         - https://github.com/EllisBallard1/IT202-001/pull/10
         - Screenshots
-        - Screenshot #1 ![image](https://user-images.githubusercontent.com/89932304/139109858-7546b0e5-0adc-4181-9f6e-4e9e3929047c.png)
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140788172-c13945a2-2969-4765-b798-7e589df8d014.png)
             - Screenshot #1 description: This picture shows that a new user was successfully able to register an account in the database.
-        - Screenshot #2 ![image](https://user-images.githubusercontent.com/89932304/139110258-a24f1642-4d40-450c-9a99-23cb12f21b95.png)
+        - Screenshot #2 
+          - ![image](https://user-images.githubusercontent.com/89932304/140788242-b53aa76d-4ae1-4ef6-a6a3-90904165499e.png)
             - Screenshot #2 description: This picture shows the confirmation that the user is now successfully registered and stored in the database.
 
-    - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to login to their account (given they enter the correct credentials))
+    - [ ] \(11/8/2021 of completion) Feature Title (User will be able to login to their account (given they enter the correct credentials))
     -  List of Evidence of Feature Completion
-        - Status: Pending (Completed)
-        - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+        - Status: (Completed)
+        - Direct Link: https://eab4-prod.herokuapp.com/Project/home.php
         - Pull Requests
         - PR link #1 https://github.com/EllisBallard1/IT202-001/pull/10
         - Screenshots
-        - Screenshot #1 ![image](https://user-images.githubusercontent.com/89932304/139706173-7fb9ae51-d02c-4471-82e1-5d501df2904c.png)
+        - Screenshot #1 
+          - ![image](https://user-images.githubusercontent.com/89932304/140788966-36c241a3-b9cb-4aae-8a7f-99f0f050eb61.png)
             - This screenshot shows the validation message and information for when the user is able to successfully login.
 
     - [ ] \(mm/dd/yyyy of completion) Feature Title (User will be able to logout)
