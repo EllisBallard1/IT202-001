@@ -143,7 +143,89 @@
         - Screenshot #2 
           - ![image](https://user-images.githubusercontent.com/89932304/140799459-60d8790e-11cb-4763-b703-735b851e927d.png)
             - This screenshot shows the message that appears when the user attmepts to update their email to one that is already in use.
+
 - Milestone 2
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: Create the Accounts Table
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: System User Check and World Account
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: Create the Transactions Table
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: Dashboard Page
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: User Created Checking Account
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: List Accounts for User
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: Account Information
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
+- [ ] \(mm/dd/yyyy of completion) Feature Title: Account Deposit/Withdraw
+  -  List of Evidence of Feature Completion
+    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Pull Requests
+      - PR link #1 (repeat as necessary)
+    - Screenshots
+      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #1 description explaining what you're trying to show
+
 - Milestone 3
 - Milestone 4
 ### Intructions
