@@ -1,3 +1,4 @@
+/*
 .alert-success {
     background-color: green
 }
@@ -13,11 +14,19 @@
 .alert-info {
     background-color: teal;
 }
-nav li{display: inline; background-color: rebeccapurple;}
-nav li a{color: grey}
+*/
+nav li{display: inline; background-color: white;}
+nav li a{color: black}
 input{border-radius: 5%;}
 body{
-    background-color: grey;
+    background-color: black;
     color: rgb(153, 0, 153);
+
+}
+
+form {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
