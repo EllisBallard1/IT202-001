@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS Accounts (
     account VARCHAR(12) UNIQUE,
     user_id INT,
     account_type VARCHAR(15),
-    balance INT DEFAULT 0,
+    balance DECIMAL(20, 2) DEFAULT 0,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES Users(id)
