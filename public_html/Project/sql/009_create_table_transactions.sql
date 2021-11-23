@@ -6,5 +6,6 @@ CREATE TABLE IF NOT EXISTS Transactions (
     memo VARCHAR(20),
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     expected_total INT,
-    FOREIGN KEY (account_source) REFERENCES Users(id)
+    FOREIGN KEY (account_source) REFERENCES Accounts(id),
+    FOREIGN KEY (account_dest) REFERENCES Accounts(id)
 )
