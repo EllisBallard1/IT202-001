@@ -131,3 +131,22 @@ function get_url($dest)
     //handle relative path
     return $BASE_PATH . $dest;
 }
+
+function generate_acc_num($account_type) {
+    $query = "INSERT INTO Accounts(account, account_type, user_id) VALUES(null, :account_type, :id)";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    //no idea what next step would be, looking at register file to possible use a try catch statement.
+    try {
+        $stmt->execute([ ":account_type" => $account_type, ":id" => get_user_id()]);
+    }
+    catch (Exception $e) {
+        users_check_duplicate($e->errorInfo);
+    }
+    //need to execute the query to get the last inserted id
+    $id = $db->lastInsertId();
+    $account_number = str_pad($id, 12, STR_PAD_LEFT);
+    $query = "UPDATE Accounts set account = $account_number where id = $id"; 
+    //update accounts set account = account number where id =last insert id
+
+}
