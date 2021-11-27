@@ -132,21 +132,56 @@ function get_url($dest)
     return $BASE_PATH . $dest;
 }
 
-function generate_acc_num($account_type) {
-    $query = "INSERT INTO Accounts(account, account_type, user_id) VALUES(null, :account_type, :id)";
-    $db = getDB();
-    $stmt = $db->prepare($query);
-    //no idea what next step would be, looking at register file to possible use a try catch statement.
-    try {
-        $stmt->execute([ ":account_type" => $account_type, ":id" => get_user_id()]);
-    }
-    catch (Exception $e) {
-        users_check_duplicate($e->errorInfo);
-    }
-    //need to execute the query to get the last inserted id
-    $id = $db->lastInsertId();
-    $account_number = str_pad($id, 12, STR_PAD_LEFT);
-    $query = "UPDATE Accounts set account = $account_number where id = $id"; 
-    //update accounts set account = account number where id =last insert id
+function get_random_str($length) {
+    return substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 36)), 0, $length);
+}
 
+
+function account_creation() {
+    if (is_logged_in()) {
+        $account = ["id" => -1, "account" => false, "balance" => 0];
+        $query = "SELECT id, account, balance from Accounts where user_id = :uid LIMIT 1";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":uid" => get_user_id()]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!$result) {
+                $created = false;
+                
+                $query = "INSERT INTO Accounts (account, user_id) VALUES (:an, :uid)";
+                $stmt = $db->prepare($query);
+                $user_id = get_user_id();
+                $account_number = "";
+
+                while (!$created) {
+                    try {
+                        $account_number = get_random_str(12);
+                        $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
+                        $created = true;
+                        flash("Welcome! Your account has been successfully created!", "success");
+                    } catch (PDOException $e) {
+                        $code = se($e->errorInfo, 0, "00000", false);
+
+                        if (
+                            $code !== "23000"
+                        ) {
+                            throw $e;
+                        }
+                    }
+                }
+                $account["id"] = $db->lastInsertId();
+                $account["account"] = $account_number;
+            } else {
+                $account["id"] = $result["id"];
+                $account["account"] = $result["account"];
+                $account["balance"] = $result["balance"];
+            }
+        } catch (PDOException $e) {
+            flash("Technical Error: " . var_export($e->errorInfo, true), "danger");
+        }
+        $_SESSION["user"]["account"] = $account;
+    } else {
+        flash("You're not logged in", "danger");
+    }
 }
