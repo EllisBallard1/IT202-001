@@ -132,12 +132,8 @@ function get_url($dest)
     return $BASE_PATH . $dest;
 }
 
-function get_random_str($length) {
-    return substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 36)), 0, $length);
-}
 
-
-function create_account(string $type="checking") {
+function create_account($type="checking") {
     if (!is_logged_in()) {
         flash("You're not logged in", "danger");
         return;
@@ -150,27 +146,32 @@ function create_account(string $type="checking") {
     $query = "INSERT INTO Accounts (user_id, account_type) values (:uid, :type)";
     $db = getDB();
     $stmt = $db->prepare($query);
-    $success = $stmt->execute([":uid" => get_user_id(), ":type" => $type]);
-    if ($success === false) {
+    try {
+        $success = $stmt->execute([":uid" => get_user_id(), ":type" => $type]);
+        $account_id = $db->lastInsertId();
+    }
+    catch (PDOException $e) {
         flash("Failed to insert new account", "danger");
         return;
     }
-    $query = "SELECT id FROM Accounts WHERE user_id = :uid ORDER BY created DESC LIMIT 1";
+    if (isset($account_id)) {
+        $account_num = str_pad($account_id, 12, "0", STR_PAD_LEFT);
 
-    $stmt = $db->prepare($query);
-    $success = $stmt->execute([":uid" => get_user_id()]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $query = "UPDATE Accounts SET account_num = :account_num WHERE id = :account_id";
 
-    $account_id = strval($result["id"]);
-    $account_num = str_pad($account_id, 12, "0", STR_PAD_LEFT);
+        $stmt = $db->prepare($query);
+        try {
+            $success = $stmt->execute([":account_num" => $account_num, ":account_id" => $account_id]);
+            flash("Account Created Successfully!", "success");
+        }
+        catch (PDOException $e) {
+            flash("Failed to insert new account", "danger");
+            return;
+        }
+    }
+}
 
-    $query = "UPDATE Accounts SET account_num = :account_num WHERE id = :account_id";
 
-    $stmt = $db->prepare($query);
-    $success = $stmt->execute([":account_num" => $account_num, ":account_id" => $account_id]);
-
-    flash("Account Created Successfully!", "success");
-    
 
 
 
@@ -216,7 +217,7 @@ function create_account(string $type="checking") {
     //     flash("Technical Error: " . var_export($e->errorInfo, true), "danger");
     // }
     // $_SESSION["user"]["account"] = $account;
-}
+
 
 
 function get_account_balance() {
