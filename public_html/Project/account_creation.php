@@ -18,7 +18,7 @@ require(__DIR__ . "/../../partials/nav.php");
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">$</span>
-                <input type="text" placeholder="Please enter a minimum of $5 for your first deposit" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <input type="number" id="initial_deposit" name = "deposit" placeholder="Please enter a minimum of $5 for your first deposit" class="form-control" min="5.0" step="0.01">
             <span class="input-group-text">.00</span>
         </div>
         <input type="submit" class="btn btn-primary" value="Create Account"/>
