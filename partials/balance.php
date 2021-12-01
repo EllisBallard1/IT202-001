@@ -1,3 +1,7 @@
+<?php
+require(__DIR__ . "/../../partials/nav.php");
+if (is_logged_in(true));
+?>
 <div id="balance-value">
     Balance: <?php echo get_account_balance(); ?>
 </div>
