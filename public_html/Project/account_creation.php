@@ -1,6 +1,6 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
-if (is_logged_in(true));
+is_logged_in(true);
 ?>
 <div class="container-fluid">
     <h1>Account Creation</h1>
