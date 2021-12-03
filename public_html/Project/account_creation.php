@@ -8,7 +8,7 @@ is_logged_in(true);
     <!-- account type select options -->
         <select class="form-select" aria-label="Default option">
             <option selected>Account Type</option>
-            <option value="checking">Checking</option>
+            <option name ="checking" value="checking">Checking</option>
         </select>
         <br><br>
     <!-- initial deposit input field --> 
@@ -24,10 +24,10 @@ is_logged_in(true);
 <?php
 //validaton for when create button is clicked
 if (isset($_POST["create"])) {
-    $db = getDB();
-    $query = $db->prepare("SELECT account_num FROM Accounts WHERE account_num = :acc_num");
-    //now need to call the function to create the account
-    //but how do I call the function properly
+    //call the create_account function
+    //not sure if this needs to be stored in a variable or used with sql
+    create_account();
+
 }
 
 ?>
