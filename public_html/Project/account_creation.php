@@ -29,9 +29,10 @@ is_logged_in(true);
 <?php
 if (isset($_POST["create"])) {
     $db = getDB();
-    $query = $db->prepare("SELECT account_num FROM Accounts WHERE account_num = :acc_num");
+    create_account();
     //now need to call the function to create the account
     //but how do I call the function properly
+
 }
 
 ?>

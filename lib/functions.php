@@ -142,12 +142,12 @@ function create_account($type="checking") {
         flash("Invalid account type: {$type}", "danger");
         return;
     }
-
+//add section for balance with a default of zero
     $query = "INSERT INTO Accounts (user_id, account_type) values (:uid, :type)";
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
-        $success = $stmt->execute([":uid" => get_user_id(), ":type" => $type]);
+        $stmt->execute([":uid" => get_user_id(), ":type" => $type]);
         $account_id = $db->lastInsertId();
     }
     catch (PDOException $e) {
@@ -161,7 +161,7 @@ function create_account($type="checking") {
 
         $stmt = $db->prepare($query);
         try {
-            $success = $stmt->execute([":account_num" => $account_num, ":account_id" => $account_id]);
+            $stmt->execute([":account_num" => $account_num, ":account_id" => $account_id]);
             flash("Account Created Successfully!", "success");
         }
         catch (PDOException $e) {
