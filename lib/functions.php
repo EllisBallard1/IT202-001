@@ -171,54 +171,52 @@ function create_account($type="checking") {
     }
 }
 
+function make_transaction($sender_id, $reciever_id, $amount, $type, $memo="") {
+    $db = getDB();
+    
+    $query = "UPDATE Accounts SET balance = balance + :amount WHERE id = :id";
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":amount" => $amount, ":id" => $reciever_id]);
+        $stmt->execute([":amount" => $amount*-1, ":id" => $sender_id]);
+    }
+    catch (PDOException $e) {
+        flash("Error accessing account information");
+        return;
+    }
+
+    $query = "SELECT id, balance FROM Accounts WHERE id = :id LIMIT 1";
+    $stmt = $db->prepare($query);
+    //fetch?
+    try {
+        $stmt->execute([":id" => $sender_id]);
+        $stmt->execute([":id" => $reciever_id]);
+    }
+    catch (PDOException $e) {
+        flash("Error accessing account information");
+        return;
+    }
 
 
 
+    $query = "INSERT INTO Transactions (account_source, account_dest, balance_change, transaction_type, memo, expected_total)
+    VALUES (:account_source, :account_dest, :balance_change, :transaction_type, :memo, :expected_total)";
 
-    // $account = ["id" => -1, "account" => false, "balance" => 0];
-    // $query = "SELECT id, account, balance from Accounts where user_id = :uid LIMIT 1";
-    // $db = getDB();
-    // $stmt = $db->prepare($query);
-    // try {
-    //     $stmt->execute([":uid" => get_user_id()]);
-    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     if (!$result) {
-    //         $created = false;
-            
-    //         $query = "INSERT INTO Accounts (account, user_id) VALUES (:an, :uid)";
-    //         $stmt = $db->prepare($query);
-    //         $user_id = get_user_id();
-    //         $account_number = "";
+    $stmt = $db->prepare($query);
 
-    //         while (!$created) {
-    //             try {
-    //                 $account_number = get_random_str(12);
-    //                 $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
-    //                 $created = true;
-    //                 flash("Welcome! Your account has been successfully created!", "success");
-    //             } catch (PDOException $e) {
-    //                 $code = se($e->errorInfo, 0, "00000", false);
+    try {
+        $stmt->execute([
+            ":account_source" => $sender_id,
+            ":account_dest" => $reciever_id,
+            ":balance_change" => $amount,
+            ":transaction_type" => $type,
+            ":memo" => $memo,
+            ":expected_total" => 
+        ]);
 
-    //                 if (
-    //                     $code !== "23000"
-    //                 ) {
-    //                     throw $e;
-    //                 }
-    //             }
-    //         }
-    //         $account["id"] = $db->lastInsertId();
-    //         $account["account"] = $account_number;
-    //     } else {
-    //         $account["id"] = $result["id"];
-    //         $account["account"] = $result["account"];
-    //         $account["balance"] = $result["balance"];
-    //     }
-    // } catch (PDOException $e) {
-    //     flash("Technical Error: " . var_export($e->errorInfo, true), "danger");
-    // }
-    // $_SESSION["user"]["account"] = $account;
+    }
 
-
+}
 
 function get_account_balance() {
     if (is_logged_in() && isset($_SESSION["user"]["account"])) {
