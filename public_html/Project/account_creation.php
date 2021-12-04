@@ -5,18 +5,13 @@ is_logged_in(true);
 <h1 class="text-center mt-4">Create New Account</h1>
 <div class="container-fluid">
     <form  onsubmit="return validate(this)" method="POST">
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="account_type" id="checking_account">
-            <label class="form-check-label" for="checking_account">
-                Checking Account
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="account_type" id="savings_account">
-            <label class="form-check-label" for="savings_account">
-                Savings Account
-            </label>
-        </div>
+    <!-- account type select options -->
+        <select class="form-select" aria-label="Default option">
+            <option selected>Account Type</option>
+            <option name ="checking" value="checking">Checking</option>
+        </select>
+        <br><br>
+    <!-- initial deposit input field --> 
         <div class="input-group mb-3">
             <span class="input-group-text">$</span>
                 <input type="number" id="initial_deposit" name = "deposit" placeholder="Please enter a minimum of $5 for your first deposit" class="form-control" min="5.0" step="0.01">
@@ -27,11 +22,11 @@ is_logged_in(true);
 </div>
 
 <?php
+//validaton for when create button is clicked
 if (isset($_POST["create"])) {
-    $db = getDB();
+    //call the create_account function
+    //not sure if this needs to be stored in a variable or used with sql
     create_account();
-    //now need to call the function to create the account
-    //but how do I call the function properly
 
 }
 
