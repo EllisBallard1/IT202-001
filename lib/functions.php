@@ -131,3 +131,116 @@ function get_url($dest)
     //handle relative path
     return $BASE_PATH . $dest;
 }
+
+
+function create_account($type="checking") {
+    if (!is_logged_in()) {
+        flash("You're not logged in", "danger");
+        return;
+    }
+    if ($type !== "checking" && $type !== "savings") {
+        flash("Invalid account type: {$type}", "danger");
+        return;
+    }
+//add section for balance with a default of zero
+    $query = "INSERT INTO Accounts (user_id, account_type) values (:uid, :type)";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":uid" => get_user_id(), ":type" => $type]);
+        $account_id = $db->lastInsertId();
+    }
+    catch (PDOException $e) {
+        flash("Failed to insert new account", "danger");
+        return;
+    }
+    if (isset($account_id)) {
+        $account_num = str_pad($account_id, 12, "0", STR_PAD_LEFT);
+
+        $query = "UPDATE Accounts SET account_num = :account_num WHERE id = :account_id";
+
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":account_num" => $account_num, ":account_id" => $account_id]);
+            flash("Account Created Successfully!", "success");
+        }
+        catch (PDOException $e) {
+            flash("Failed to insert new account", "danger");
+            return;
+        }
+    }
+}
+
+function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
+    $db = getDB();
+    
+    $query = "UPDATE Accounts SET balance = balance :amount WHERE id = :id";
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":amount" => '+ ' . $amount, ":id" => $dest_id]);
+        $stmt->execute([":amount" => '- ' . $amount, ":id" => $source_id]);
+    }
+    catch (PDOException $e) {
+        flash("Error accessing account information");
+        return;
+    }
+
+    $query = "SELECT balance FROM Accounts WHERE id = :id LIMIT 1";
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":id" => $source_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $source_balance = $result["balance"];
+        $stmt->execute([":id" => $dest_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dest_balance = $result["balance"];
+
+    }
+    catch (PDOException $e) {
+        flash("Error accessing account information");
+        return;
+    }
+
+    $query = "INSERT INTO Transactions (account_source, account_dest, balance_change, transaction_type, memo, expected_total)
+    VALUES (:account_source, :account_dest, :balance_change, :transaction_type, :memo, :expected_total)";
+
+    $stmt = $db->prepare($query);
+
+    try {
+        $stmt->execute([
+            ":account_source" => $source_id,
+            ":account_dest" => $dest_id,
+            ":balance_change" => $amount,
+            ":transaction_type" => $type,
+            ":memo" => $memo,
+            ":expected_total" => $dest_balance
+        ]);
+        $stmt->execute([
+            ":account_source" => $dest_id,
+            ":account_dest" => $source_id,
+            ":balance_change" => $amount*-1,
+            ":transaction_type" => $type,
+            ":memo" => $memo,
+            ":expected_total" => $source_balance
+        ]);
+    }
+    catch (PDOException $e) {
+        flash("Error updating transaction table");
+        return;
+    }
+
+}
+
+function get_account_balance() {
+    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
+        return (int)se($_SESSION["user"]["account"], "balance", 0, false);
+    }
+    return 0;
+}
+
+function get_user_account_id() {
+    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
+        return (int)se($_SESSION["user"]["account"], "id", 0, false);
+    }
+    return 0;
+}
