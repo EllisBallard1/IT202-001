@@ -171,33 +171,35 @@ function create_account($type="checking") {
     }
 }
 
-function make_transaction($sender_id, $reciever_id, $amount, $type, $memo="") {
+function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
     $db = getDB();
     
-    $query = "UPDATE Accounts SET balance = balance + :amount WHERE id = :id";
+    $query = "UPDATE Accounts SET balance = balance :amount WHERE id = :id";
     $stmt = $db->prepare($query);
     try {
-        $stmt->execute([":amount" => $amount, ":id" => $reciever_id]);
-        $stmt->execute([":amount" => $amount*-1, ":id" => $sender_id]);
+        $stmt->execute([":amount" => '+ ' . $amount, ":id" => $dest_id]);
+        $stmt->execute([":amount" => '- ' . $amount, ":id" => $source_id]);
     }
     catch (PDOException $e) {
         flash("Error accessing account information");
         return;
     }
 
-    $query = "SELECT id, balance FROM Accounts WHERE id = :id LIMIT 1";
+    $query = "SELECT balance FROM Accounts WHERE id = :id LIMIT 1";
     $stmt = $db->prepare($query);
-    //fetch?
     try {
-        $stmt->execute([":id" => $sender_id]);
-        $stmt->execute([":id" => $reciever_id]);
+        $stmt->execute([":id" => $source_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $source_balance = $result["balance"];
+        $stmt->execute([":id" => $dest_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dest_balance = $result["balance"];
+
     }
     catch (PDOException $e) {
         flash("Error accessing account information");
         return;
     }
-
-
 
     $query = "INSERT INTO Transactions (account_source, account_dest, balance_change, transaction_type, memo, expected_total)
     VALUES (:account_source, :account_dest, :balance_change, :transaction_type, :memo, :expected_total)";
@@ -206,14 +208,25 @@ function make_transaction($sender_id, $reciever_id, $amount, $type, $memo="") {
 
     try {
         $stmt->execute([
-            ":account_source" => $sender_id,
-            ":account_dest" => $reciever_id,
+            ":account_source" => $source_id,
+            ":account_dest" => $dest_id,
             ":balance_change" => $amount,
             ":transaction_type" => $type,
             ":memo" => $memo,
-            ":expected_total" => 
+            ":expected_total" => $dest_balance
         ]);
-
+        $stmt->execute([
+            ":account_source" => $dest_id,
+            ":account_dest" => $source_id,
+            ":balance_change" => $amount*-1,
+            ":transaction_type" => $type,
+            ":memo" => $memo,
+            ":expected_total" => $source_balance
+        ]);
+    }
+    catch (PDOException $e) {
+        flash("Error updating transaction table");
+        return;
     }
 
 }
