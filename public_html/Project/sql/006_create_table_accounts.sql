@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Accounts (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    account VARCHAR(12) UNIQUE,
+    account_num VARCHAR(12) UNIQUE DEFAULT NULL,
     user_id INT,
     account_type VARCHAR(15),
     balance DECIMAL(20, 2) DEFAULT 0,
