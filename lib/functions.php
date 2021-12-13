@@ -174,14 +174,17 @@ function create_account($type="checking") {
 function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
     $db = getDB();
     
-    $query = "UPDATE Accounts SET balance = balance :amount WHERE id = :id";
-    $stmt = $db->prepare($query);
+    $query_add = "UPDATE Accounts SET balance = balance + :amount WHERE id = :id";
+    $query_subtract = "UPDATE Accounts SET balance = balance - :amount WHERE id = :id";
     try {
-        $stmt->execute([":amount" => '+ ' . $amount, ":id" => $dest_id]);
-        $stmt->execute([":amount" => '- ' . $amount, ":id" => $source_id]);
-    }
+    $stmt = $db->prepare($query_add);
+        $stmt->execute([":amount" => $amount, ":id" => $dest_id]);
+    
+    $stmt = $db->prepare($query_subtract);
+        $stmt->execute([":amount" => $amount, ":id" => $source_id]);
+    } 
     catch (PDOException $e) {
-        flash("Error accessing account information");
+        flash("Error Accessing 2");
         return;
     }
 
@@ -197,7 +200,7 @@ function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
 
     }
     catch (PDOException $e) {
-        flash("Error accessing account information");
+        flash("Error Accessing 2");
         return;
     }
 
@@ -225,7 +228,7 @@ function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
         ]);
     }
     catch (PDOException $e) {
-        flash("Error updating transaction table");
+        flash("Error Accessing 3");
         return;
     }
 
