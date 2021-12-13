@@ -1,8 +1,9 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
-get_user_account();
+$user_account_info = get_user_account();
 ?>
+
 <div class="container-fluid">
     <h1>My Accounts</h1>
     <table class="table">
@@ -14,11 +15,13 @@ get_user_account();
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">account #1</th>
-                <td>Checking</td>
-                <td>011010101</td>
-            </tr>
+            <?php foreach ($user_account_info as $account) : ?>
+                <tr>
+                    <td><?php echo $account["account_num"] ?></td>
+                    <td><?php echo $account["account_type"] ?></td>
+                    <td><?php echo $account["balance"] ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

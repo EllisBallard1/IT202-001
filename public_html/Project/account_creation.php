@@ -26,6 +26,7 @@ is_logged_in(true);
 //validaton for when create button is clicked
 if (isset($_POST["create"])) {
     create_account($_POST["account_type"], $_POST["deposit"]);
+    die(header('Location: accounts.php'));
 }
 ?>
 <?php

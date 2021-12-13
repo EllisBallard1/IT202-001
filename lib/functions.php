@@ -262,8 +262,12 @@ function get_user_account() {
     $query = "SELECT * FROM Accounts WHERE user_id = :id";
     $stmt = $db->prepare($query);
     $stmt->execute([":id" => $user_id]);
+    $user_accounts = [];
     while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
         //flash($results["account_num"]);
+        //array_push($user_accounts, $results);
+        $user_accounts[] = $results;
     }
+    return $user_accounts;
     
 }
