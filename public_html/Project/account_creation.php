@@ -25,9 +25,11 @@ is_logged_in(true);
 <?php
 //validaton for when create button is clicked
 if (isset($_POST["create"])) {
-    create_account($_POST["account_type"]);
+    create_account($_POST["account_type"], $_POST["deposit"]);
 }
-
+?>
+<?php
+require(__DIR__ . "/../../partials/flash.php");
 ?>
 
 

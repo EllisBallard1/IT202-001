@@ -133,13 +133,17 @@ function get_url($dest)
 }
 
 
-function create_account($type="checking") {
+function create_account($type, $deposit_amount) {
     if (!is_logged_in()) {
         flash("You're not logged in", "danger");
         return;
     }
     if ($type !== "checking" && $type !== "savings") {
         flash("Invalid account type: {$type}", "danger");
+        return;
+    }
+    if ($deposit_amount < 5.00) {
+        flash("Please deposit a minimum of $5.00");
         return;
     }
 //add section for balance with a default of zero
@@ -169,6 +173,8 @@ function create_account($type="checking") {
             return;
         }
     }
+
+    make_transaction(-1, $account_id, $deposit_amount, $type);
 }
 
 function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
@@ -246,4 +252,18 @@ function get_user_account_id() {
         return (int)se($_SESSION["user"]["account"], "id", 0, false);
     }
     return 0;
+}
+
+function get_user_account() {
+    if (is_logged_in()){
+        $user_id = get_user_id();
+    }
+    $db = getDB();
+    $query = "SELECT * FROM Accounts WHERE user_id = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute([":id" => $user_id]);
+    while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        //flash($results["account_num"]);
+    }
+    
 }

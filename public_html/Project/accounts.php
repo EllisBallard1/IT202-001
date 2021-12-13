@@ -1,6 +1,7 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
+get_user_account();
 ?>
 <div class="container-fluid">
     <h1>My Accounts</h1>
@@ -22,3 +23,6 @@ is_logged_in(true);
     </table>
 </div>
 
+<?php
+require(__DIR__ . "/../../partials/flash.php");
+?>
