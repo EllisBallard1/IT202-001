@@ -17,7 +17,8 @@ $user_account_info = get_user_account();
         <tbody>
             <?php foreach ($user_account_info as $account) : ?>
                 <tr>
-                    <td><a href="account_information.php"><?php echo $account["account_num"] ?></a></td>
+                    <?php $account_num = $account["account_num"] ?>
+                    <td><a href="account_information.php"><?php echo $account_num ?></a></td>
                     <td><?php echo $account["account_type"] ?></td>
                     <td><?php echo $account["balance"] ?></td>
                 </tr>
