@@ -18,7 +18,8 @@ $user_account_info = get_user_account();
             <?php foreach ($user_account_info as $account) : ?>
                 <tr>
                     <?php $account_num = $account["account_num"] ?>
-                    <td><a href="account_information.php"><?php echo $account_num ?></a></td>
+                    <!-- Send account information using GET for information page -->
+                    <td><a href="account_information.php?acc_id=<?php echo $account["id"]; ?>"><?php echo $account_num ?></a></td>
                     <td><?php echo $account["account_type"] ?></td>
                     <td><?php echo $account["balance"] ?></td>
                 </tr>
