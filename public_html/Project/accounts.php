@@ -15,6 +15,7 @@ $user_account_info = get_user_account();
             </tr>
         </thead>
         <tbody>
+            <!-- Loop through all the accounts associated with the user -->
             <?php foreach ($user_account_info as $account) : ?>
                 <tr>
                     <?php $account_num = $account["account_num"] ?>
