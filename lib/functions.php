@@ -271,3 +271,13 @@ function get_user_account() {
     return $user_accounts;
     
 }
+
+function get_transaction_data() {
+    if (is_logged_in()){
+        $user_id = get_user_id();
+    }
+    $db = getDB();
+    //get the account ID number to access transaction history table
+    
+    $query = "SELECT * FROM Transactions WHERE account_source = :acc_source";
+}
