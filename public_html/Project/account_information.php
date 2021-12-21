@@ -13,7 +13,9 @@ $account_id = $_GET["acc_id"];
 //SELECT [desired columns] FROM Transactions JOIN Accounts a on a.id = Transactions.src JOIN Accounts b on Transactions.dest = b.id WHERE Transactions.src = :account_id
 //query to select all transaction data for the account number selected.
 ?>
-
+<div class="container-fluid">
+    <a href="transaction_history.php?acc_id=<?php echo $account_id; ?>" class="btn btn-primary">Transaction History</a>
+</div>
 <div class="container-fluid">
     <h1>Account Information</h1>
     <table class="table">
