@@ -1,4 +1,5 @@
 # Project Name: Simple Bank
+## Video Demo Link: https://youtu.be/BhD_tzqM-k0
 ## Project Summary: This project will create a bank simulation for users. They’ll be able to have various accounts, do standard bank functions like deposit, withdraw, internal (user’s accounts)/external(other user’s accounts) transfers, and creating/closing accounts.
 ## Github Link: https://github.com/EllisBallard1/IT202-001/tree/prod
 ## Project Board Link: https://github.com/EllisBallard1/IT202-001/projects/1
