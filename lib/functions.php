@@ -305,3 +305,16 @@ function get_transaction_data($account_id) {
         return;
     }
 }
+
+function account_info($account_id) {
+
+    $db = getDB();
+    $query = "SELECT account_num, account_type, balance FROM Accounts WHERE id = :id";
+    $stmt = $db->prepare($query);
+
+        $stmt->execute([":id" => $account_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+
+
+}
