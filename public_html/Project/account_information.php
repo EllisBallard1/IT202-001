@@ -34,13 +34,7 @@ $account_info = account_info($account_id);
         </tbody>
     </table>
     <br>
-    <br>    
+    <br>   
+    <button class="btn btn-danger" href="<?php echo close_account($account_id); ?>">Close Account</button>
 </div>
 
-<form method="post">
-    <input type="submit" name="close_account"/>
-</form>
-<?php 
-if (isset($_POST['close_account'])) {
-    close_account($account_id);
-}

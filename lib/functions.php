@@ -331,5 +331,5 @@ function close_account($account_id) {
         flash("Error Accessing Transaction history");
         return;
     }
-    
+
 }
