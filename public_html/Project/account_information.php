@@ -33,4 +33,8 @@ $account_info = account_info($account_id);
                 <td><?php echo $account_info["balance"] ?></td>
         </tbody>
     </table>
+    <br>
+    <br>   
+    <button class="btn btn-danger" href="<?php echo close_account($account_id); ?>">Close Account</button>
 </div>
+
