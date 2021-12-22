@@ -133,13 +133,17 @@ function get_url($dest)
 }
 
 
-function create_account($type="checking") {
+function create_account($type, $deposit_amount) {
     if (!is_logged_in()) {
         flash("You're not logged in", "danger");
         return;
     }
     if ($type !== "checking" && $type !== "savings") {
         flash("Invalid account type: {$type}", "danger");
+        return;
+    }
+    if ($deposit_amount < 5.00) {
+        flash("Please deposit a minimum of $5.00");
         return;
     }
 //add section for balance with a default of zero
@@ -169,19 +173,24 @@ function create_account($type="checking") {
             return;
         }
     }
+
+    make_transaction(-1, $account_id, $deposit_amount, $type);
 }
 
 function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
     $db = getDB();
     
-    $query = "UPDATE Accounts SET balance = balance :amount WHERE id = :id";
-    $stmt = $db->prepare($query);
+    $query_add = "UPDATE Accounts SET balance = balance + :amount WHERE id = :id";
+    $query_subtract = "UPDATE Accounts SET balance = balance - :amount WHERE id = :id";
     try {
-        $stmt->execute([":amount" => '+ ' . $amount, ":id" => $dest_id]);
-        $stmt->execute([":amount" => '- ' . $amount, ":id" => $source_id]);
-    }
+    $stmt = $db->prepare($query_add);
+        $stmt->execute([":amount" => $amount, ":id" => $dest_id]);
+    
+    $stmt = $db->prepare($query_subtract);
+        $stmt->execute([":amount" => $amount, ":id" => $source_id]);
+    } 
     catch (PDOException $e) {
-        flash("Error accessing account information");
+        flash("Error Accessing 2");
         return;
     }
 
@@ -197,7 +206,7 @@ function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
 
     }
     catch (PDOException $e) {
-        flash("Error accessing account information");
+        flash("Error Accessing 2");
         return;
     }
 
@@ -225,7 +234,7 @@ function make_transaction($source_id, $dest_id, $amount, $type, $memo="") {
         ]);
     }
     catch (PDOException $e) {
-        flash("Error updating transaction table");
+        flash("Error Accessing 3");
         return;
     }
 
@@ -243,4 +252,84 @@ function get_user_account_id() {
         return (int)se($_SESSION["user"]["account"], "id", 0, false);
     }
     return 0;
+}
+
+function get_user_account() {
+    if (is_logged_in()){
+        $user_id = get_user_id();
+    }
+    $db = getDB();
+    $query = "SELECT * FROM Accounts WHERE user_id = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute([":id" => $user_id]);
+    $user_accounts = [];
+    while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        //flash($results["account_num"]);
+        //array_push($user_accounts, $results);
+        $user_accounts[] = $results;
+    }
+    return $user_accounts;
+    
+}
+
+function get_transaction_data($account_id) {
+    if (is_logged_in()){
+        $user_id = get_user_id();
+    }
+    $db = getDB();
+    //get account id
+    //use it to search transaction table
+    //join where account id is the source id in transactions
+    $query = "SELECT * FROM Transactions WHERE account_source = :acc_id OR account_dest = :acc_id";
+    $stmt = $db->prepare($query);
+    try {
+        /*
+        $stmt->execute([":acc_id" => $account_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $account_number = $result["transaction_id"];
+        $account_source = $result["account_source"];
+        $account_dest = $result["account_dest"];
+        $balance_change = $result["balance_change"];
+        $transaction_type = $result["transaction_type"];
+        $memo = $result["memo"];
+        */
+        $stmt->execute([":acc_id" => $account_id]);
+        $transaction_data = [];
+        while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $transaction_data[] = $results;
+        }
+        return $transaction_data;
+    }
+    catch (PDOException $e) {
+        flash("Error Accessing Transaction history");
+        return;
+    }
+}
+
+function account_info($account_id) {
+
+    $db = getDB();
+    $query = "SELECT account_num, account_type, balance FROM Accounts WHERE id = :id";
+    $stmt = $db->prepare($query);
+
+        $stmt->execute([":id" => $account_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+
+
+}
+
+function close_account($account_id) {
+    $db = getDB();
+    $query = "DELETE * FROM Accounts WHERE id = :id";
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":id" => $account_id]);
+        flash("Successfully closed account");
+    }
+    catch (PDOException $e) {
+        flash("Error Accessing Transaction history");
+        return;
+    }
+
 }
