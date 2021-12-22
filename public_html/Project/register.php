@@ -17,7 +17,7 @@ reset_session();
             <label for="pw" class="form-label">Password</label>
             <input type="password" class="form-control" id="pw" name="password" required minlength="8" />
         </div>
-        <div id="passwordHelpBlock" class="form-text">
+        <div id="passwordHelpBlock" class="text-dark">
             Your password must be 8-20 characters long
         </div> 
         <div class="mb-3">
