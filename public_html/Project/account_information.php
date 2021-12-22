@@ -33,4 +33,14 @@ $account_info = account_info($account_id);
                 <td><?php echo $account_info["balance"] ?></td>
         </tbody>
     </table>
+    <br>
+    <br>    
 </div>
+
+<form method="post">
+    <input type="submit" name="close_account"/>
+</form>
+<?php 
+if (isset($_POST['close_account'])) {
+    close_account($account_id);
+}

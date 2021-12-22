@@ -318,3 +318,18 @@ function account_info($account_id) {
 
 
 }
+
+function close_account($account_id) {
+    $db = getDB();
+    $query = "DELETE * FROM Accounts WHERE id = :id";
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":id" => $account_id]);
+        flash("Successfully closed account");
+    }
+    catch (PDOException $e) {
+        flash("Error Accessing Transaction history");
+        return;
+    }
+    
+}
