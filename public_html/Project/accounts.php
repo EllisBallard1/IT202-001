@@ -15,9 +15,12 @@ $user_account_info = get_user_account();
             </tr>
         </thead>
         <tbody>
+            <!-- Loop through all the accounts associated with the user -->
             <?php foreach ($user_account_info as $account) : ?>
                 <tr>
-                    <td><?php echo $account["account_num"] ?></td>
+                    <?php $account_num = $account["account_num"] ?>
+                    <!-- Send account information using GET for information page -->
+                    <td><a href="account_information.php?acc_id=<?php echo $account["id"]; ?>"><?php echo $account_num ?></a></td>
                     <td><?php echo $account["account_type"] ?></td>
                     <td><?php echo $account["balance"] ?></td>
                 </tr>

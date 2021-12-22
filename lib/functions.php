@@ -271,3 +271,37 @@ function get_user_account() {
     return $user_accounts;
     
 }
+
+function get_transaction_data($account_id) {
+    if (is_logged_in()){
+        $user_id = get_user_id();
+    }
+    $db = getDB();
+    //get account id
+    //use it to search transaction table
+    //join where account id is the source id in transactions
+    $query = "SELECT * FROM Transactions WHERE account_source = :acc_id OR account_dest = :acc_id";
+    $stmt = $db->prepare($query);
+    try {
+        /*
+        $stmt->execute([":acc_id" => $account_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $account_number = $result["transaction_id"];
+        $account_source = $result["account_source"];
+        $account_dest = $result["account_dest"];
+        $balance_change = $result["balance_change"];
+        $transaction_type = $result["transaction_type"];
+        $memo = $result["memo"];
+        */
+        $stmt->execute([":acc_id" => $account_id]);
+        $transaction_data = [];
+        while ($results = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $transaction_data[] = $results;
+        }
+        return $transaction_data;
+    }
+    catch (PDOException $e) {
+        flash("Error Accessing Transaction history");
+        return;
+    }
+}
